@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Overrated.Models
 {
@@ -10,6 +11,8 @@ namespace Overrated.Models
         public DateTime Datestamp { get; set; } = DateTime.Now;
 
         public int RestaurantId { get; set; }
+
+        [JsonIgnore]
         public Restaurant Restaurant { get; set; }
     }
 }

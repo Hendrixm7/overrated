@@ -18,24 +18,27 @@ namespace Overrated.Controllers
         [HttpGet]
         public List<Restaurant> GetAllRestaurants ()
         {
-
-            return new List<Restaurant> ();
-
+            var restaurants = db.Restaurants.OrderBy (m => m.Name).Include (r => r.Feedback);
+            return restaurants.ToList ();
         }
 
         [HttpGet ("{id}")]
         public ActionResult<Restaurant> GetOneRestaurant (int id)
         {
-
-            return Ok (new Restaurant ());
-
+            var restaurant = db.Restaurants.Include (r => r.Feedback).FirstOrDefault (i => i.ID == id);
+            if (restaurant == null)
+            {
+                return NotFound ();
+            }
+            return Ok (restaurant);
         }
 
         [HttpPost]
         public Restaurant CreateRestaurant (Restaurant restaurant)
         {
-
-            return new Restaurant ();
+            db.Restaurants.Add (restaurant);
+            db.SaveChanges ();
+            return restaurant;
         }
 
     }

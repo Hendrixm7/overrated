@@ -18,8 +18,10 @@ namespace Overrated.Controllers
         [HttpPost]
         public Feedback CreateFeedback (Feedback feedback)
         {
-
-            return new Feedback ();
+            var restaurant = db.Restaurants.First (r => r.ID == feedback.RestaurantId);
+            restaurant.Feedback.Add (feedback);
+            db.SaveChanges ();
+            return feedback;
         }
 
     }
