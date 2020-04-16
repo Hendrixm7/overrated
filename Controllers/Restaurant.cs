@@ -22,6 +22,16 @@ namespace Overrated.Controllers
             return restaurants.ToList ();
         }
 
+        [HttpGet ("search")]
+        public List<Restaurant> SearchRestaurantsByName (string name)
+        {
+            var restaurants = from restaurant in db.Restaurants
+            where EF.Functions.Like (restaurant.Name.ToLower (), $"{name.ToLower()}%")
+            select restaurant;
+
+            return restaurants.ToList ();
+        }
+
         [HttpGet ("{id}")]
         public ActionResult<Restaurant> GetOneRestaurant (int id)
         {
