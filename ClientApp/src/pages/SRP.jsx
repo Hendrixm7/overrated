@@ -15,14 +15,20 @@ export function SRP() {
           name: query.get('name'),
         },
       })
-      .then(res => setRestaurants(res.data))
-  })
+      .then(response => setRestaurants(response.data))
+  }, [query.get('name')])
 
   return (
-    <div className="container">
-      {restaurants.map(restaurant => (
-        <RestaurantCard name={restaurant.name} address={restaurant.address} />
-      ))}
+    <div className="srp-page">
+      <ul className="restaurant-list">
+        {restaurants.map((restaurant, idx) => (
+          <RestaurantCard
+            key={`${restaurant.name}-${idx}`}
+            name={restaurant.name}
+            address={restaurant.location}
+          />
+        ))}
+      </ul>
     </div>
   )
 }
