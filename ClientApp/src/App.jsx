@@ -6,7 +6,7 @@ import { SRP } from './pages/SRP'
 import HelloWorld from './pages/_template/HelloWorld'
 import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
-
+import { PDP } from './pages/PDP'
 import { initIcons } from './helpers'
 
 import './styles/main.scss'
@@ -22,6 +22,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/search" component={SRP} />
+          <Route path="/restaurant/:id" component={PDP} />
           <Route exact path="/counter" component={HelloWorld} />
           <Route exact path="/typescript" component={HeyWorld} />
           <Route exact path="*" component={NotFound} />
