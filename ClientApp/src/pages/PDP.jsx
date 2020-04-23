@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function PDP(props) {
+  const history = useHistory()
   const [restaurantResult, setRestaurantResult] = useState({})
+
+  const handleReviewClick = () => {
+    history.push(`/leave-a-review?id=${restaurantResult.id}`)
+  }
 
   useEffect(() => {
     const id = props.match.params.id
@@ -17,6 +23,9 @@ export function PDP(props) {
       <div className="hero-banner"></div>
       <div className="body-content">
         <h1 className="restaurant-name">{restaurantResult.name}</h1>
+        <button className="review-button" onClick={handleReviewClick}>
+          Leave a Review
+        </button>
         <div className="restaurant-rating">
           <div className="smiley-wrapper">
             <span>30%</span>

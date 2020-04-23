@@ -8,6 +8,7 @@ import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
 import { PDP } from './pages/PDP'
 import { initIcons } from './helpers'
+import { ReviewPage } from './pages/ReviewPage'
 
 import './styles/main.scss'
 
@@ -23,6 +24,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/search" component={SRP} />
           <Route path="/restaurant/:id" component={PDP} />
+          <Route path="/leave-a-review" component={ReviewPage} />
           <Route exact path="/counter" component={HelloWorld} />
           <Route exact path="/typescript" component={HeyWorld} />
           <Route exact path="*" component={NotFound} />
