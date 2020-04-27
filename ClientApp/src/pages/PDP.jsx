@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { parseJSON, format } from 'date-fns'
+
+const DATE_FORMAT = 'M/d/yyyy'
 
 export function PDP(props) {
   const history = useHistory()
@@ -18,6 +21,21 @@ export function PDP(props) {
       .then(response => setRestaurantResult(response.data))
   }, [props.match.params.id])
 
+  let overratedPercent = 0
+  let underratedPercent = 0
+
+  if (restaurantResult.feedback) {
+    overratedPercent =
+      (restaurantResult.feedback.filter(feedback => feedback.overrated).length /
+        restaurantResult.feedback.length) *
+      100
+    underratedPercent =
+      (restaurantResult.feedback.filter(feedback => !feedback.overrated)
+        .length /
+        restaurantResult.feedback.length) *
+      100
+  }
+
   return (
     <div className="pdp-page">
       <div className="hero-banner"></div>
@@ -28,7 +46,7 @@ export function PDP(props) {
         </button>
         <div className="restaurant-rating">
           <div className="smiley-wrapper">
-            <span>30%</span>
+            {!!overratedPercent && <span>{overratedPercent}%</span>}
 
             <FontAwesomeIcon
               icon={['far', 'meh']}
@@ -37,7 +55,7 @@ export function PDP(props) {
             <p className="rating-text">Overrated</p>
           </div>
           <div className="smiley-wrapper">
-            <span>70%</span>
+            {!!underratedPercent && <span>{underratedPercent}%</span>}
 
             <FontAwesomeIcon
               icon={['far', 'grin']}
@@ -46,7 +64,18 @@ export function PDP(props) {
             <p className="rating-text">Underrated</p>
           </div>
         </div>
-        <div className="feedback-container">{/* <FeedbackItem /> */}</div>
+        <div className="feedback-container">
+          <h3>Reviews</h3>
+          {restaurantResult.feedback &&
+            restaurantResult.feedback.map(feedback => (
+              <div className="feedback-item">
+                <span className="feedback-item-datestamp">
+                  {format(parseJSON(feedback.datestamp), DATE_FORMAT)}
+                </span>
+                <p className="feedback-item-comment">{feedback.comment}</p>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   )

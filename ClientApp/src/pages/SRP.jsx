@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import get from 'lodash.get'
+import { parseJSON } from 'date-fns'
 
 import { useQuery } from '../hooks'
 import { RestaurantCard } from '../components/RestaurantCard'
@@ -34,7 +36,9 @@ export function SRP() {
             name={restaurant.name}
             address={restaurant.location}
             onClick={handleCardClick}
-            test="michelle"
+            latestComment={
+              restaurant.feedback[restaurant.feedback.length - 1].comment
+            }
           />
         ))}
       </ul>

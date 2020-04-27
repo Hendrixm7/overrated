@@ -1,5 +1,8 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  .navbar {
+    margin-bottom: 0 !important;
+  }
   .restaurant-name {
     text-transform: capitalize;
   }

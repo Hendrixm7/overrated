@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export function RestaurantCard({ id, name, onClick }) {
+export function RestaurantCard({ id, name, onClick, latestComment }) {
   const handleClick = () => {
     onClick(id)
   }
@@ -35,7 +35,7 @@ export function RestaurantCard({ id, name, onClick }) {
               <p className="rating-text">Underrated</p>
             </div>
           </div>
-          <p className="latest-comment"> It's the worst.</p>
+          <p className="latest-comment">{latestComment}</p>
         </div>
       </div>
     </li>
