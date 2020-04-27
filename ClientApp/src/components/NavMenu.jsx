@@ -9,7 +9,7 @@ import {
   NavLink,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import './style.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -38,6 +38,7 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
+              <FontAwesomeIcon icon={['fa', 'cat']} />
               Overrated
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />

@@ -6,6 +6,10 @@
     font-family: 'Open Sans', sans-serif;
     padding: 0 30px;
 
+    a {
+      text-decoration: none;
+    }
+
     .restaurant-card {
       margin: 24px 0px;
       transition: box-shadow 0.3s;

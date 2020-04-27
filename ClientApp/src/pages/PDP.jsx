@@ -69,9 +69,14 @@ export function PDP(props) {
           {restaurantResult.feedback &&
             restaurantResult.feedback.map(feedback => (
               <div className="feedback-item">
-                <span className="feedback-item-datestamp">
-                  {format(parseJSON(feedback.datestamp), DATE_FORMAT)}
-                </span>
+                <div className="feedback-item-date-rating">
+                  <span className="feedback-item-datestamp">
+                    {format(parseJSON(feedback.datestamp), DATE_FORMAT)}
+                  </span>
+                  <FontAwesomeIcon
+                    icon={['far', feedback.overrated ? 'meh' : 'grin']}
+                  />
+                </div>
                 <p className="feedback-item-comment">{feedback.comment}</p>
               </div>
             ))}

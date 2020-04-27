@@ -1,5 +1,29 @@
+// html,
+// body {
+//   min-height: 100%;
+// }
+
 body {
   font-family: 'Open Sans', sans-serif;
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a {
+    color: #3d405b;
+  }
+
+  #root,
+  #root > div {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
   .navbar {
     margin-bottom: 0 !important;
   }
