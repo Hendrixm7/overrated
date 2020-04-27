@@ -10,6 +10,7 @@ export function RestaurantCard({ id, name, onClick, latestComment }) {
           <img
             src="https://via.placeholder.com/150"
             className="restaurant-image"
+            alt=""
           />
           <div className="restaurant-info">
             <h4 className="restaurant-name">{name}</h4>

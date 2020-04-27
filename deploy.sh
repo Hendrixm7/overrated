@@ -1,8 +1,8 @@
-docker build -t Overrated-image .
+docker build -t overrated-image .
 
-docker tag Overrated-image registry.heroku.com/Overrated/web
+docker tag overrated-image registry.heroku.com/overrated-app/web
 
 
-docker push registry.heroku.com/Overrated/web
+docker push registry.heroku.com/overrated-app/web
 
-heroku container:release web -a Overrated
+heroku container:release web -a overrated-app

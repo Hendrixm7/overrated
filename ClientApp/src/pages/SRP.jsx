@@ -16,7 +16,7 @@ export function SRP() {
         },
       })
       .then(response => setRestaurants(response.data))
-  }, [query.get('name')])
+  }, [query])
 
   return (
     <div className="srp-page">
