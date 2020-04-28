@@ -41,6 +41,7 @@ export function SRP() {
               underrated={underrated}
               latestComment={latestComment}
               imgSrc={restaurant.imageThumbnail}
+              address={restaurant.location}
             />
           )
         })}

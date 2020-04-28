@@ -11,6 +11,7 @@ export function RestaurantCard({
   overrated,
   underrated,
   imgSrc,
+  address,
 }) {
   const total = overrated + underrated
   const overratedPercent = isNaN(
@@ -36,6 +37,7 @@ export function RestaurantCard({
           />
           <div className="restaurant-info">
             <h4 className="restaurant-name">{name}</h4>
+            <span className="restaurant-address">{address}</span>
             <div className="restaurant-rating">
               <div className="smiley-wrapper">
                 <span>{overratedPercent}%</span>
@@ -56,6 +58,7 @@ export function RestaurantCard({
                 <p className="rating-text">Underrated</p>
               </div>
             </div>
+            <h6>Latest Review</h6>
             {latestComment && <p className="latest-comment">{latestComment}</p>}
           </div>
         </div>
