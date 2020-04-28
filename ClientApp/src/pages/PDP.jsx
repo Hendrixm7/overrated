@@ -25,15 +25,17 @@ export function PDP(props) {
   let underratedPercent = 0
 
   if (restaurantResult.feedback) {
-    overratedPercent =
+    overratedPercent = (
       (restaurantResult.feedback.filter(feedback => feedback.overrated).length /
         restaurantResult.feedback.length) *
       100
-    underratedPercent =
+    ).toFixed(0)
+    underratedPercent = (
       (restaurantResult.feedback.filter(feedback => !feedback.overrated)
         .length /
         restaurantResult.feedback.length) *
       100
+    ).toFixed(0)
   }
 
   return (
@@ -46,7 +48,7 @@ export function PDP(props) {
         </button>
         <div className="restaurant-rating">
           <div className="smiley-wrapper">
-            {!!overratedPercent && <span>{overratedPercent}%</span>}
+            <span>{isNaN(overratedPercent) ? 0 : overratedPercent}%</span>
 
             <FontAwesomeIcon
               icon={['far', 'meh']}
@@ -55,7 +57,7 @@ export function PDP(props) {
             <p className="rating-text">Overrated</p>
           </div>
           <div className="smiley-wrapper">
-            {!!underratedPercent && <span>{underratedPercent}%</span>}
+            <span>{isNaN(underratedPercent) ? 0 : underratedPercent}%</span>
 
             <FontAwesomeIcon
               icon={['far', 'grin']}

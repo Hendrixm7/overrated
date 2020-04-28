@@ -16,22 +16,34 @@ export function SRP() {
         },
       })
       .then(response => setRestaurants(response.data))
-  }, [query])
+  }, [query.get('name')])
 
   return (
     <div className="srp-page">
       <ul className="restaurant-list">
-        {restaurants.map((restaurant, index) => (
-          <RestaurantCard
-            key={`${restaurant.name}-${index}`}
-            id={restaurant.id}
-            name={restaurant.name}
-            address={restaurant.location}
-            latestComment={
-              restaurant.feedback[restaurant.feedback.length - 1].comment
-            }
-          />
-        ))}
+        {restaurants.map((restaurant, index) => {
+          const latestComment = restaurant.feedback.length
+            ? restaurant.feedback[restaurant.feedback.length - 1].comment
+            : ''
+          const overrated = restaurant.feedback.length
+            ? restaurant.feedback.filter(feedback => feedback.overrated).length
+            : 0
+          const underrated = restaurant.feedback.length
+            ? restaurant.feedback.filter(feedback => !feedback.overrated).length
+            : 0
+          return (
+            <RestaurantCard
+              key={`${restaurant.name}-${index}`}
+              id={restaurant.id}
+              name={restaurant.name}
+              address={restaurant.location}
+              overrated={overrated}
+              underrated={underrated}
+              latestComment={latestComment}
+              imgSrc={restaurant.imageThumbnail}
+            />
+          )
+        })}
       </ul>
     </div>
   )

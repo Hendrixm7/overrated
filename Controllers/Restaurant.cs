@@ -25,7 +25,7 @@ namespace Overrated.Controllers
         [HttpGet ("search")]
         public List<Restaurant> SearchRestaurantsByName (string name)
         {
-            var restaurants = db.Restaurants.Where (restaurant => restaurant.Name.ToLower ().Contains (name)).Include (restaurants => restaurants.Feedback);
+            var restaurants = db.Restaurants.Where (restaurant => restaurant.Name.ToLower ().StartsWith (name.ToLower ())).Include (restaurants => restaurants.Feedback);
             return restaurants.ToList ();
         }
 

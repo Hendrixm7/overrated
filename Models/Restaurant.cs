@@ -8,6 +8,8 @@ namespace Overrated.Models
         public string Name { get; set; }
         public string Location { get; set; }
 
+        public string ImageThumbnail { get; set; }
+
         public List<Feedback> Feedback { get; set; } = new List<Feedback> ();
     }
 }
