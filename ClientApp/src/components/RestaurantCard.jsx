@@ -30,11 +30,7 @@ export function RestaurantCard({
     <Link to={`/restaurant/${id}`}>
       <li className="restaurant-card">
         <div className="restaurant-card-container">
-          <img
-            src="https://via.placeholder.com/150"
-            className="restaurant-image"
-            alt=""
-          />
+          <img src={imgSrc} className="restaurant-image" alt="" />
           <div className="restaurant-info">
             <h4 className="restaurant-name">{name}</h4>
             <span className="restaurant-address">{address}</span>

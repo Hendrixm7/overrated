@@ -22,8 +22,14 @@
         border: 1px solid #eee;
         border-radius: 4px;
         display: flex;
+
         .restaurant-image {
           margin-right: 24px;
+          width: 250px;
+          height: 250px;
+          display: flex;
+          flex: 1;
+          object-fit: cover;
         }
 
         .restaurant-info {
@@ -63,6 +69,9 @@
               color: #2e2d2b;
             }
           }
+          h6 {
+            margin-top: auto;
+          }
           .latest-comment {
             color: #757280;
             border: 1px solid #eee;
@@ -70,7 +79,6 @@
             width: 100%;
             font-size: 12px;
             margin-bottom: 0;
-            margin-top: auto;
           }
         }
       }
