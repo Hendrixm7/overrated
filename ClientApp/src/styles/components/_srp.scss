@@ -28,7 +28,8 @@
           width: 250px;
           height: 250px;
           display: flex;
-          flex: 1;
+          flex-grow: 1;
+          flex-shrink: 0;
           object-fit: cover;
         }
 
