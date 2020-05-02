@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { parseJSON, format } from 'date-fns'
+import { parseJSON, format, compareDesc, compareAsc } from 'date-fns'
 
 const DATE_FORMAT = 'M/d/yyyy'
 
@@ -38,6 +38,12 @@ export function PDP(props) {
     ).toFixed(0)
   }
 
+  const orderedFeedback = restaurantResult.feedback
+    ? restaurantResult.feedback.sort((a, b) =>
+        compareDesc(parseJSON(a.datestamp), parseJSON(b.datestamp))
+      )
+    : []
+
   return (
     <div className="pdp-page">
       <div className="hero-banner"></div>
@@ -68,8 +74,8 @@ export function PDP(props) {
         </div>
         <div className="feedback-container">
           <h3>Reviews</h3>
-          {restaurantResult.feedback &&
-            restaurantResult.feedback.map(feedback => (
+          {orderedFeedback &&
+            orderedFeedback.map(feedback => (
               <div className="feedback-item">
                 <div className="feedback-item-date-rating">
                   <span className="feedback-item-datestamp">
